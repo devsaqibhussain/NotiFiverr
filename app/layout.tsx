@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Fiverr Notifier",
+  title: "NotiFiverr",
   description:
     "A simple web app to notify you after a set amount of time passes so that you can refresh your fiverr account, created by Dev Saqib",
 };
