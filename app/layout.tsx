@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { inter } from "./font";
 import { ThemeProvider } from "@/components/theme-provider";
 import PageHeader from "@/components/PageHeader";
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: "NotiFiverr",
@@ -26,6 +27,7 @@ export default function RootLayout({
         >
           <PageHeader />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

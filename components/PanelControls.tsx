@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, {useState} from "react";
 import { Button } from "@/components/ui/button";
 import { LoopIcon, StopIcon, PlayIcon } from "@radix-ui/react-icons";
 import {
@@ -9,17 +10,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const PanelControls = ({ ...props }) => {
+  const [active,setActive] = useState("05:00")
   return (
     <div className="flex gap-2">
       <DropdownMenu>
         <DropdownMenuTrigger className="border border-input p-2 rounded-md">
-          {props.display}
+          {active}
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem
             onClick={() => {
               props.setDisplay("05:00");
-              props.setCounter(5);
+              props.setCounter(300);
+              setActive("05:00")
             }}
           >
             05:00
@@ -27,7 +30,8 @@ const PanelControls = ({ ...props }) => {
           <DropdownMenuItem
             onClick={() => {
               props.setDisplay("10:00");
-              props.setCounter(10);
+              props.setCounter(600);
+              setActive("10:00")
             }}
           >
             10:00
@@ -35,7 +39,8 @@ const PanelControls = ({ ...props }) => {
           <DropdownMenuItem
             onClick={() => {
               props.setDisplay("15:00");
-              props.setCounter(15);
+              props.setCounter(900);
+              setActive("15:00")
             }}
           >
             15:00
@@ -43,7 +48,8 @@ const PanelControls = ({ ...props }) => {
           <DropdownMenuItem
             onClick={() => {
               props.setDisplay("20:00");
-              props.setCounter(20);
+              props.setCounter(1200);
+              setActive("20:00")
             }}
           >
             20:00
@@ -51,7 +57,7 @@ const PanelControls = ({ ...props }) => {
         </DropdownMenuContent>
       </DropdownMenu>
       {props.states.isStart ? (
-        <Button variant={"outline"} onClick={props.onStart}>
+        <Button variant={"outline"} onClick={props.onStop}>
           <StopIcon /> Stop
         </Button>
       ) : (
@@ -66,7 +72,7 @@ const PanelControls = ({ ...props }) => {
           variant={"outline"}
           onClick={props.onLoop}
           size="icon"
-          className="bg-green-500/20 dark:bg-green-500/50 hover:bg-green-500 dark:hover:bg-green-500/40"
+          className="bg-green-500 dark:bg-green-500/50 hover:bg-green-400 dark:hover:bg-green-500/40"
         >
           <LoopIcon />
         </Button>
