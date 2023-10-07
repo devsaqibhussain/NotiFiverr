@@ -16,9 +16,9 @@ const Panel = () => {
   const [counter, setCounter] = useState(300);
   const [value, setValue] = useState(300);
   const { toast } = useToast()
-  var audio = new Audio("/notisound.wav");
   function play() {
-
+    
+    var audio = new Audio("/notisound.wav");
     repeatAudio=setInterval(()=>{audio.play();},1000)
     setTimeout(()=>{clearInterval(repeatAudio)},4000)
     toast({
