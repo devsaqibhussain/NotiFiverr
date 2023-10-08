@@ -17,7 +17,7 @@ const Panel = () => {
   const [value, setValue] = useState(10);
   const { toast } = useToast();
 
-  let audio = new Audio("/notisound.wav");
+  let audio:any
 
   function play() {
     repeatAudio = setInterval(() => {
@@ -51,8 +51,11 @@ const Panel = () => {
     clearInterval(intervalID);
     console.log("stop");
   };
+  
   useEffect(() => {
-    console.log(counter);
+    if(!audio){
+      audio = new Audio("/notisound.wav");
+    }
     const minutes = Math.floor(counter / 60);
     const seconds = counter % 60;
     const formattedTime = `${String(minutes).padStart(2, "0")}:${String(
@@ -70,6 +73,7 @@ const Panel = () => {
         setIsStart(false);
       }
     }
+    
   }, [counter, onLoop]);
 
   return (
