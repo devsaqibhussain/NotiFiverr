@@ -13,8 +13,8 @@ const Panel = () => {
   const [isStart, setIsStart] = useState(false);
   const [onLoop, setOnLoop] = useState(true);
   const [display, setDisplay] = useState("05:00");
-  const [counter, setCounter] = useState(10);
-  const [value, setValue] = useState(10);
+  const [counter, setCounter] = useState(300);
+  const [value, setValue] = useState(300);
   const { toast } = useToast();
 
   let audio:any
