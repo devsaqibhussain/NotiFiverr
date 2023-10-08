@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { SiFiverr } from "react-icons/si";
 import { BiSolidBellRing } from "react-icons/bi";
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/components/ui/use-toast";
 import PanelDisplay from "./PanelDisplay";
 import PanelControls from "./PanelControls";
 import { Button } from "./ui/button";
@@ -13,19 +13,32 @@ const Panel = () => {
   const [isStart, setIsStart] = useState(false);
   const [onLoop, setOnLoop] = useState(true);
   const [display, setDisplay] = useState("05:00");
-  const [counter, setCounter] = useState(300);
-  const [value, setValue] = useState(300);
-  const { toast } = useToast()
+  const [counter, setCounter] = useState(10);
+  const [value, setValue] = useState(10);
+  const { toast } = useToast();
+
+  let audio = new Audio("/notisound.wav");
+
   function play() {
-    
-    var audio = new Audio("/notisound.wav");
-    repeatAudio=setInterval(()=>{audio.play();},1000)
-    setTimeout(()=>{clearInterval(repeatAudio)},4000)
+    repeatAudio = setInterval(() => {
+      audio.play();
+    }, 1000);
+    setTimeout(() => {
+      clearInterval(repeatAudio);
+    }, 4000);
     toast({
-    title: "Reminder",
-    description: "Refresh your fiverr page.",
-    action: <Button onClick={()=>{clearInterval(repeatAudio)}}>Ok</Button>
-    })
+      title: "Reminder",
+      description: "Refresh your fiverr page.",
+      action: (
+        <Button
+          onClick={() => {
+            clearInterval(repeatAudio);
+          }}
+        >
+          Ok
+        </Button>
+      ),
+    });
   }
   const onStart = () => {
     setIsStart(true);
@@ -58,7 +71,6 @@ const Panel = () => {
       }
     }
   }, [counter, onLoop]);
-  
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -77,8 +89,8 @@ const Panel = () => {
         }}
         states={{ isStart: isStart, onLoop: onLoop }}
         setCounter={(e: number) => {
-          console.log(e)
-          setValue(e)
+          console.log(e);
+          setValue(e);
           setCounter(e);
         }}
         setDisplay={(e: string) => setDisplay(e)}
